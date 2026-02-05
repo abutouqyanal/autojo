@@ -6,10 +6,10 @@ import {
   Car, Zap, Fuel, Info, AlertCircle, Linkedin, 
   CheckCircle, Check, Landmark, Leaf, Share2, TrendingUp, 
   BookOpen, ChevronDown, FileText, Globe, Gauge, 
-  X, Mail, Phone, Code, ExternalLink
+  X, Mail, Phone, Code, ExternalLink, ShieldCheck
 } from 'lucide-react';
 
-// تعريف الأنواع لتجنب أخطاء TypeScript
+// تعريف الأنواع
 type TabType = 'customs' | 'loan' | 'savings';
 type LangType = 'ar' | 'en';
 type ModalType = 'privacy' | 'contact' | null;
@@ -28,7 +28,7 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // --- States (تم تعديل الأنواع لقبول القيمة الفارغة وتجنب الايرور) ---
+  // --- States ---
   const [carPrice, setCarPrice] = useState<number | ''>('');
   const [engineType, setEngineType] = useState<string>('electric');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -38,7 +38,6 @@ export default function Home() {
   const [totalCost, setTotalCost] = useState<number | null>(null);
   const [taxDetails, setTaxDetails] = useState<string>('');
   
-  // هنا التعديل: <number | ''> عشان يقبل الحقل الفاضي
   const [loanAmount, setLoanAmount] = useState<number | ''>('');
   const [downPayment, setDownPayment] = useState<number | ''>('');
   const [interestRate, setInterestRate] = useState<number | ''>(5.5);
@@ -138,6 +137,28 @@ export default function Home() {
         placeholder: "مثال: 15000",
         resultLabel: "القسط السنوي التقديري:"
       },
+      // --- قسم المقالات الجديد (SEO) ---
+      article: {
+        title: "دليل شامل: كل ما تحتاج معرفته عن جمارك السيارات في الأردن 2026",
+        sections: [
+          {
+            head: "1. التغييرات الجوهرية في قانون 2026",
+            body: "شهد عام 2026 تحولاً جذرياً في هيكلة الضرائب على المركبات في الأردن. تم إلغاء نظام الشرائح السعرية المعقد واستبداله بنسب ضريبية خاصة ثابتة تعتمد على نوع المحرك. الهدف من هذا التغيير هو تبسيط العملية الحسابية وتقليل التلاعب في الفواتير، حيث أصبحت الضريبة على السيارات الكهربائية 27% ثابتة مهما كانت قوة البطارية أو سعر السيارة."
+          },
+          {
+            head: "2. كيف يتم احتساب القيمة التخمينية؟",
+            body: "يقع الكثير من المشترين في خطأ الاعتماد على فاتورة الشراء. دائرة الجمارك الأردنية تعتمد على 'جداول الاستهلاك' (Depreciation Tables). السيارة تفقد نسبة معينة من قيمتها سنوياً (مثلاً 15% السنة الأولى). لذلك، عند استخدام حاسبة AutoJo، ننصح دائماً بوضع مبلغ أعلى قليلاً من سعر الشراء الفعلي للحصول على نتيجة دقيقة."
+          },
+          {
+            head: "3. السيارات الكهربائية vs البنزين: أرقام وحقائق",
+            body: "رغم فرض ضريبة 27% على الكهرباء، إلا أنها لا تزال الخيار الاقتصادي الأول. تكلفة قطع مسافة 100 كم بالكهرباء (شحن منزلي) تبلغ حوالي 1.5 - 2 دينار، بينما تتجاوز 10 دنانير لسيارات البنزين. بالإضافة إلى الإعفاء من رسوم التسجيل الأولى وتوفير الصيانة الدورية (زيوت، فلاتر، قشط)."
+          },
+          {
+            head: "4. نصائح ذهبية قبل الشراء من المنطقة الحرة",
+            body: "تأكد دائماً من تقرير الكارسير (CarFax) للسيارات الواردة من أمريكا، أو تقرير الفحص الكوري. افحص البطارية (SOH) وتأكد أنها فوق 90%. لا تعتمد على الشاحن المتنقل فقط، وقم بتركيب نقطة شحن منزلية (Wallbox) لحماية بطارية سيارتك."
+          }
+        ]
+      },
       footer: {
         rights: "© 2026 AutoJo - جميع الحقوق محفوظة",
         dev: "تم التطوير بواسطة",
@@ -146,7 +167,7 @@ export default function Home() {
       },
       modals: {
         privacyTitle: "سياسة الخصوصية",
-        privacyText: "نحن في AutoJo نحترم خصوصيتك. هذا الموقع لا يقوم بتخزين أي بيانات شخصية أو مالية. جميع العمليات الحسابية تتم محلياً على متصفحك. نحن نستخدم ملفات تعريف الارتباط (Cookies) فقط لتحسين تجربة المستخدم وعرض الإعلانات المناسبة.",
+        privacyText: "نحن في AutoJo نحترم خصوصيتك. هذا الموقع لا يقوم بتخزين أي بيانات شخصية أو مالية. جميع العمليات الحسابية تتم محلياً على متصفحك. نحن نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربة المستخدم وعرض الإعلانات المناسبة عبر Google AdSense. استخدامك للموقع يعني موافقتك على هذه السياسة.",
         contactTitle: "تواصل معنا",
         contactText: "هل لديك استفسار أو اقتراح؟ يسعدنا سماع صوتك. يمكنك التواصل معنا عبر القنوات التالية:"
       }
@@ -224,6 +245,28 @@ export default function Home() {
         placeholder: "Example: 15000",
         resultLabel: "Est. Annual Premium:"
       },
+      // --- New Article Section (SEO) ---
+      article: {
+        title: "Comprehensive Guide: Car Customs in Jordan 2026",
+        sections: [
+          {
+            head: "1. Key Changes in 2026 Regulations",
+            body: "2026 marked a shift in Jordan's vehicle tax structure. The complex slab system was replaced with flat special tax rates based on engine type. The aim is to simplify calculations, with Electric Vehicles (EVs) now subject to a flat 27% tax regardless of battery size or price."
+          },
+          {
+            head: "2. Understanding Appraised Value",
+            body: "Customs do not rely solely on your purchase invoice. They use 'Depreciation Tables'. A car loses a percentage of its value annually. When using the AutoJo calculator, we recommend entering a value slightly higher than your purchase price for accuracy."
+          },
+          {
+            head: "3. EV vs. Gasoline: The Numbers",
+            body: "Despite the 27% tax, EVs remain the top economic choice. Driving 100km on electricity (home charging) costs about 1.5 - 2 JOD, compared to over 10 JOD for gasoline. Plus, savings on maintenance (oil, filters) make EVs superior long-term."
+          },
+          {
+            head: "4. Tips for Buying from the Free Zone",
+            body: "Always check the CarFax for US imports or the Korean inspection report. Check the Battery State of Health (SOH). Install a home Wallbox charger to protect your battery longevity."
+          }
+        ]
+      },
       footer: {
         rights: "© 2026 AutoJo - All Rights Reserved",
         dev: "Developed by",
@@ -232,7 +275,7 @@ export default function Home() {
       },
       modals: {
         privacyTitle: "Privacy Policy",
-        privacyText: "At AutoJo, we respect your privacy. This site does not store any personal or financial data. All calculations are performed locally on your browser. We use cookies solely to enhance user experience and serve relevant ads.",
+        privacyText: "At AutoJo, we respect your privacy. This site does not store any personal or financial data. All calculations are performed locally on your browser. We use cookies solely to enhance user experience and serve relevant ads via Google AdSense. By using this site, you agree to this policy.",
         contactTitle: "Contact Us",
         contactText: "Have a question or suggestion? We'd love to hear from you. Reach out via:"
       }
@@ -293,10 +336,6 @@ export default function Home() {
   const shareToWhatsapp = () => {
     const text = `Check out AutoJo Calculator: \n ${window.location.href}`;
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-  };
-
-  const toggleFaq = (index: number) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
   return (
@@ -440,21 +479,18 @@ export default function Home() {
                       const max = Math.round(val * 0.0375); 
                       document.getElementById('ins-res')!.innerText = val > 0 ? `${min} - ${max}` : '---'; 
                     }} 
-                    // Fixed Input for leading zero + Fixed Direction based on language
                     className="w-full bg-slate-900/50 border border-slate-700 rounded-xl p-4 text-white placeholder-slate-600 outline-none focus:border-blue-500 transition-colors" 
                     dir={lang === 'ar' ? 'rtl' : 'ltr'} 
                   />
-                  {/* Dynamic position for JD label */}
                   <span className={`absolute top-4 text-slate-500 text-sm ${lang === 'ar' ? 'left-4' : 'right-4'}`}>JD</span>
                 </div>
                 <div className="mt-6 pt-6 border-t border-white/5 flex justify-between items-end"><span className="text-slate-400 text-sm">{content.insurance.resultLabel}</span><span className="text-3xl font-black text-blue-400" id="ins-res">---</span></div>
-                {/* Dynamic alignment for disclaimer */}
                 <p className={`text-[10px] text-slate-500 mt-2 ${lang === 'ar' ? 'text-left' : 'text-right'}`}>JD / Year</p>
               </div>
             </div>
           </section>
 
-          {/* Dynamic Info & Checklist & FAQ */}
+          {/* Steps & Docs */}
           <div className="grid md:grid-cols-2 gap-8 mb-12">
              <section className="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100">
                <h3 className="font-bold text-slate-800 mb-6 flex items-center gap-2"><BookOpen size={20} className="text-blue-500" />{content.info.stepsTitle}</h3>
@@ -469,12 +505,51 @@ export default function Home() {
                 </div>
              </section>
           </div>
+
+          {/* FAQ */}
           <section className="bg-white rounded-[2rem] p-8 md:p-10 shadow-sm border border-slate-100 mb-20">
             <h2 className="text-2xl font-black text-slate-900 mb-10 text-center">{content.faq.title}</h2>
             <div className="space-y-4 max-w-3xl mx-auto">
               {content.faq.list.map((item, index) => (<div key={index} className="bg-slate-50 rounded-2xl px-6 transition-all hover:bg-slate-100"><button onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)} className={`w-full flex justify-between items-center py-5 focus:outline-none ${lang === 'ar' ? 'text-right' : 'text-left'}`}><span className={`font-bold text-base md:text-lg transition-colors ${openFaqIndex === index ? 'text-blue-600' : 'text-slate-800'}`}>{item.q}</span><div className={`p-1 rounded-full transition-colors ${openFaqIndex === index ? 'bg-blue-100 text-blue-600' : 'bg-slate-200 text-slate-500'}`}><ChevronDown size={18} className={`transition-transform duration-300 ${openFaqIndex === index ? 'rotate-180' : ''}`} /></div></button><AnimatePresence>{openFaqIndex === index && (<motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden"><p className="text-slate-600 font-medium text-sm leading-relaxed pb-6 border-t border-slate-200/50 pt-4">{item.a}</p></motion.div>)}</AnimatePresence></div>))}
             </div>
           </section>
+
+          {/* --- New SEO Article Section (لحل مشكلة المحتوى غير ذي قيمة) --- */}
+          <section className="bg-slate-50 py-20 px-4 border-t border-slate-200 rounded-[3rem] mb-20">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">{content.article.title}</h2>
+                <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
+              </div>
+              
+              <div className="grid gap-10">
+                {content.article.sections.map((sec, idx) => (
+                  <div key={idx} className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-4 flex items-center gap-3">
+                      <span className="bg-blue-100 text-blue-600 w-10 h-10 flex items-center justify-center rounded-full text-lg font-black">
+                        {idx + 1}
+                      </span>
+                      {sec.head}
+                    </h3>
+                    <p className="text-slate-600 leading-loose text-base md:text-lg opacity-90 text-justify">
+                      {sec.body}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Disclaimer Box */}
+              <div className="mt-12 p-6 bg-amber-50 border border-amber-100 rounded-2xl flex gap-4 items-start">
+                <ShieldCheck className="text-amber-600 shrink-0 mt-1" size={24} />
+                <p className="text-sm text-amber-800 leading-relaxed font-medium">
+                  {lang === 'ar' 
+                    ? "إخلاء مسؤولية: هذا الموقع يقدم أدوات حسابية تقديرية بناءً على القوانين المعلنة. القيمة النهائية للرسوم تحددها دائرة الجمارك الأردنية عند المعاينة الفعلية. الموقع غير مسؤول عن أي فروقات مالية."
+                    : "Disclaimer: This site provides estimated calculations based on public laws. Final fees are determined by Jordan Customs upon inspection. The site is not responsible for financial discrepancies."}
+                </p>
+              </div>
+            </div>
+          </section>
+
         </div>
       </main>
 
